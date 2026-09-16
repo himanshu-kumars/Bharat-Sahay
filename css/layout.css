@@ -1,0 +1,6 @@
+/* ---------- layout.css ---------- */
+.container{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+.section{padding-block:clamp(4rem,8vw,6.5rem)}
+.section-head{max-width:62ch;margin-bottom:2.6rem}
+.section-head .h2{margin:.7rem 0 .8rem}
+.grid{display:grid;gap:1.25rem}

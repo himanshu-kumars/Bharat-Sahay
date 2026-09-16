@@ -1,0 +1,170 @@
+/* ============================================================
+   features.css — styles for the v2 additions
+   command palette · wallet · insights · scheme badges
+   ============================================================ */
+
+/* ---------- command palette ---------- */
+.palette-scrim{
+  position:fixed;inset:0;z-index:120;display:none;
+  background:rgba(15,31,26,.42);backdrop-filter:blur(5px);
+  padding:min(14vh,7rem) 1rem 1rem;
+}
+.palette-scrim.show{display:block;animation:palFade .16s var(--ease)}
+@keyframes palFade{from{opacity:0}to{opacity:1}}
+.palette{
+  width:min(660px,100%);margin-inline:auto;background:var(--surface-elevated);
+  border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-2);
+  overflow:hidden;animation:palRise .2s var(--ease);
+}
+@keyframes palRise{from{opacity:0;transform:translateY(-10px) scale(.985)}to{opacity:1;transform:none}}
+.palette-head{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.05rem;border-bottom:1px solid var(--border)}
+.palette-head input{flex:1;border:0;outline:0;background:none;font-size:1rem;font-family:var(--font-body)}
+.palette-head input::placeholder{color:var(--muted-foreground)}
+.palette-kbd{
+  font-family:var(--font-mono);font-size:.66rem;padding:.13rem .4rem;border-radius:5px;
+  border:1px solid var(--border-strong);background:var(--muted);color:var(--muted-foreground);
+}
+.palette-list{max-height:min(52vh,420px);overflow:auto;padding:.4rem}
+.palette-item{
+  display:flex;align-items:center;gap:.75rem;padding:.6rem .75rem;border-radius:var(--r-md);
+  cursor:pointer;transition:background .12s var(--ease);
+}
+.palette-item.active{background:var(--primary-soft)}
+.pi-t{display:block;font-weight:600;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pi-s{display:block;font-size:.77rem;color:var(--muted-foreground);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.palette-empty{padding:1.6rem 1rem;text-align:center;color:var(--muted-foreground);font-size:.88rem}
+.palette-foot{
+  display:flex;gap:1rem;flex-wrap:wrap;align-items:center;padding:.55rem 1.05rem;
+  border-top:1px solid var(--border);background:var(--muted);
+  font-size:.74rem;color:var(--muted-foreground);
+}
+.palette-foot span{display:inline-flex;align-items:center;gap:.3rem}
+
+/* nav trigger button */
+.pal-btn{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.38rem .6rem .38rem .7rem;
+  border:1px solid var(--border);border-radius:var(--r-pill);background:var(--surface);
+  color:var(--muted-foreground);font-size:.8rem;transition:all .16s var(--ease);
+}
+.pal-btn:hover{border-color:var(--primary);color:var(--primary-deep)}
+@media (max-width:900px){.pal-btn span.pal-label{display:none}}
+
+/* ---------- scheme level badges ---------- */
+.tag-state{background:var(--accent-soft);color:var(--accent-deep);border-color:transparent;font-weight:650}
+.tag-central{background:var(--primary-soft);color:var(--primary-deep);border-color:transparent;font-weight:650}
+
+/* ---------- confidence meter ---------- */
+.conf{display:flex;align-items:center;gap:.5rem;margin-top:.15rem}
+.conf-bar{flex:1;height:5px;border-radius:99px;background:var(--muted);overflow:hidden}
+.conf-bar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .45s var(--ease)}
+.conf-num{font-family:var(--font-mono);font-size:.7rem;color:var(--muted-foreground);flex:none}
+
+/* ---------- wallet ---------- */
+.doc-list{display:grid;gap:.4rem;max-height:520px;overflow:auto;padding-right:.3rem}
+.doc-list .doc-check{display:flex;align-items:center;gap:.6rem}
+.doc-list .doc-check .tag{font-size:.68rem}
+
+/* ---------- insights ---------- */
+.detail-sec svg[role="img"]{color:var(--foreground)}
+
+/* ---------- portfolio strip ---------- */
+.folio{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.9rem;margin-bottom:1.2rem;
+}
+.folio .card{padding:1rem 1.15rem}
+.folio b{display:block;font-family:var(--font-display);font-size:1.75rem;font-weight:800;line-height:1.1}
+
+/* ---------- next-step nudge ---------- */
+.nudge{
+  display:flex;gap:.85rem;align-items:flex-start;padding:1rem 1.15rem;border-radius:var(--r-lg);
+  background:var(--primary-soft);border:1px solid var(--primary);margin-bottom:1.1rem;
+}
+html[data-theme="dark"] .nudge{background:rgba(14,123,93,.16)}
+
+/* ---------- print ---------- */
+@media print{
+  .nav,.bottom-nav,.footer,.palette-scrim,.toast-stack{display:none !important}
+}
+
+/* ---------- mobile: the palette button is a desktop affordance ----------
+   (Ctrl/⌘K needs a keyboard; on phones search lives in Explore) */
+@media (max-width:760px){
+  .pal-btn{display:none}
+}
+@media (max-width:900px){
+  .pal-btn kbd{display:none}
+}
+
+/* Direct-answer layer (js/answers.js) emits paragraph breaks in the answer text.
+   The original Brain never produced newlines, so this cannot change any pre-existing
+   rendering — it only lets the new multi-part answers breathe. */
+.a-text{white-space:pre-line}
+
+/* ── Navbar brand robustness ─────────────────────────────────────────────
+   On a slow connection the Google webfonts arrive late, so the brand renders
+   in a wider system fallback. "Bharat Sahay" then wrapped to two lines and the
+   CITIZEN ASSISTANCE subtitle was clipped by the fixed 68px .nav height.
+   Keep the lockup on one line and let the nav absorb the fallback metrics. */
+.brand{flex:0 0 auto;min-width:0;line-height:1.1}
+.brand > span:last-child{
+  display:flex;flex-direction:column;justify-content:center;gap:.14rem;
+  white-space:nowrap;line-height:1.12;
+}
+.brand small{white-space:nowrap}
+.nav-right{flex-shrink:0}
+/* height -> min-height so a tall fallback font is never cropped mid-glyph */
+.nav{height:auto;min-height:var(--nav-h)}
+.nav-inner{min-width:0}
+
+@media (max-width:560px){
+  /* Scale the wordmark with the viewport instead of clipping it. A flex
+     container cannot show an ellipsis, so any overflow here is a hard
+     mid-word cut ("Bharat Sal") — scaling degrades gracefully instead,
+     and still fits when a wide fallback font is in use. */
+  .brand{font-size:clamp(.84rem,3.1vw,1.16rem)}
+  .brand-mark{width:30px;height:30px;flex:none}
+  .nav-inner{gap:.6rem}
+  .nav-right{gap:.45rem}
+}
+@media (max-width:420px){
+  /* Subtitle is the first thing to go — the wordmark carries the brand. */
+  .brand small{display:none}
+}
+@media (max-width:340px){
+  /* Sub-340: keep the mark only, so the actions always stay reachable. */
+  .brand > span:last-child{display:none}
+  .nav-right{gap:.35rem}
+  .lang-btn{padding-left:.4rem;padding-right:.4rem}
+}
+/* The ⌘K palette button is the widest optional item in .nav-right. It was only
+   hidden below 760px, so with late-loading (wider) fallback fonts it pushed the
+   Start button past the viewport at tablet widths. Hide the label sooner and
+   keep the whole cluster from ever being the thing that overflows. */
+@media (max-width:1080px){ .pal-btn .pal-label{display:none} }
+
+/* Belt-and-braces: whatever the font metrics turn out to be, the action cluster
+   must never be the thing that pushes the layout wider than the screen. The
+   brand yields space first (it is the only flexible item), and .nav-right is
+   capped so its contents shrink instead of overflowing. */
+.nav-inner{overflow:hidden;flex-wrap:nowrap}
+.brand{flex:0 1 auto;min-width:0}
+.nav-right{max-width:100%;min-width:0}
+.nav .btn-start{flex:0 0 auto}
+
+/* The original hides the Start label under 640px. With fallback fonts the same
+   pressure appears earlier on tall/narrow phones and at tablet widths, so extend
+   the same treatment rather than inventing new chrome. */
+@media (max-width:1080px){ .nav .btn-start span{display:none} }
+
+/* Very small phones (<=360px). The original overflowed here too (353px of
+   content in a 320px viewport), so this is a pre-existing rough edge rather
+   than a regression — but the hero headline is easy to tame. */
+@media (max-width:360px){
+  .container{width:calc(100% - 1.5rem)}
+  .display{font-size:clamp(1.7rem,8.4vw,2.4rem);word-break:break-word}
+  .lede{font-size:.95rem}
+  /* scheme cards must shrink with the grid track, not their intrinsic content */
+  .results-grid{gap:.9rem}
+  .scheme-card{min-width:0}
+  .scheme-card *{min-width:0}
+}

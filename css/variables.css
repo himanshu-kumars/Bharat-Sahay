@@ -1,0 +1,51 @@
+/* ============================================================
+   BHARAT SAHAY — DESIGN SYSTEM
+   css/variables · css/reset · css/base · css/layout ·
+   css/components · css/pages · css/responsive · css/animations
+   (bundled in one file for the hackathon artifact; sectioned)
+   ============================================================ */
+
+/* ---------- variables.css ---------- */
+:root{
+  --background:#F4F3EB;
+  --foreground:#152420;
+  --muted:#EAE8DB;
+  --muted-foreground:#5E6A62;
+  --surface:#FBFAF4;
+  --surface-elevated:#FFFFFF;
+  --border:#E1DFCF;
+  --border-strong:#C9C7B4;
+
+  --primary:#0E7B5D;
+  --primary-deep:#0A5C45;
+  --primary-foreground:#EFFAF4;
+  --primary-soft:#E2F1E9;
+
+  --accent:#E8A33D;          /* marigold — used sparingly */
+  --accent-deep:#A96E12;
+  --accent-soft:#F9EDD6;
+
+  --ink:#0F1F1A;             /* dark sections */
+  --ink-2:#16281F;
+  --paper-on-ink:#F2F1E6;
+
+  --success:#1E7B4F;
+  --success-soft:#E1F0E6;
+  --warning:#A9720E;
+  --warning-soft:#F7ECD2;
+  --danger:#BC4632;
+  --danger-soft:#F7E4DE;
+
+  --font-display:"Bricolage Grotesque","Mukta","Mukta Mahee",system-ui,sans-serif;
+  --font-body:"Public Sans","Mukta","Mukta Mahee",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"Spline Sans Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:22px; --r-pill:999px;
+
+  --shadow-1:0 1px 2px rgba(21,36,32,.05), 0 4px 14px rgba(21,36,32,.06);
+  --shadow-2:0 2px 4px rgba(21,36,32,.06), 0 18px 44px -12px rgba(21,36,32,.18);
+  --shadow-lift:0 3px 6px rgba(21,36,32,.06), 0 24px 52px -14px rgba(14,123,93,.22);
+
+  --nav-h:68px;
+  --ease:cubic-bezier(.22,.9,.28,1);
+}

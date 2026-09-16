@@ -1,0 +1,31 @@
+/* ---------- base.css ---------- */
+body{
+  font-family:var(--font-body);
+  font-size:16px;line-height:1.6;color:var(--foreground);
+  background:var(--background);
+  background-image:
+    radial-gradient(52rem 34rem at 88% -6%, rgba(232,163,61,.14), transparent 62%),
+    radial-gradient(48rem 32rem at -12% 22%, rgba(14,123,93,.10), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M28 0v56M0 28h56' stroke='%23152420' stroke-opacity='.045'/%3E%3Ccircle cx='28' cy='28' r='1.1' fill='%23152420' fill-opacity='.06'/%3E%3C/svg%3E");
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.12;letter-spacing:-.015em;font-weight:700}
+.display{font-size:clamp(2.5rem,5.4vw,4.35rem);font-weight:800;line-height:1.04;letter-spacing:-.028em}
+.h1{font-size:clamp(1.9rem,3.4vw,2.8rem);font-weight:800;letter-spacing:-.022em}
+.h2{font-size:clamp(1.5rem,2.4vw,2.05rem);font-weight:750;letter-spacing:-.02em}
+.h3{font-size:1.18rem;font-weight:700}
+.small{font-size:.875rem}
+.caption{font-size:.78rem;color:var(--muted-foreground)}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--primary-deep);
+  display:inline-flex;align-items:center;gap:.55rem;
+}
+.eyebrow .pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--primary);position:relative}
+.eyebrow .pulse-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--primary);opacity:.5;animation:ping 2.2s var(--ease) infinite}
+.lede{font-size:1.1rem;color:var(--muted-foreground);max-width:56ch}
+strong{font-weight:650}
+:focus-visible{outline:2.5px solid var(--primary);outline-offset:2.5px;border-radius:6px}
+.skip-link{position:fixed;left:12px;top:-60px;z-index:200;background:var(--ink);color:var(--paper-on-ink);padding:.6rem 1rem;border-radius:var(--r-sm);transition:top .2s}
+.skip-link:focus{top:12px}
+.ic{width:18px;height:18px;flex:none}
